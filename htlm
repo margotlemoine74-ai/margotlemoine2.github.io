@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Thème Chaleureux</title>
+    <style>
+        /* Variables de couleurs chaudes et pâles */
+        :root {
+            /* Couleurs principales chaudes */
+            --warm-primary: #F4A261;        /* Orange doux */
+            --warm-secondary: #E76F51;      /* Terracotta */
+            --warm-accent: #E9C46A;         /* Jaune miel */
+            
+            /* Couleurs pâles */
+            --pale-cream: #FAF0E6;          /* Crème */
+            --pale-beige: #F5F5DC;          /* Beige clair */
+            --pale-peach: #FFEEE6;          /* Pêche pâle */
+            --pale-sage: #F0F4E8;           /* Sauge pâle */
+            
+            /* Couleurs neutres */
+            --warm-white: #FEFCF8;          /* Blanc cassé chaud */
+            --warm-gray: #8B7A6B;           /* Gris chaud */
+            --dark-brown: #5D4E37;          /* Brun foncé */
+            
+            /* Ombres douces */
+            --soft-shadow: 0 4px 15px rgba(232, 111, 81, 0.1);
+            --warm-shadow: 0 8px 25px rgba(244, 162, 97, 0.15);
+        }
+
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--pale-cream) 0%, var(--pale-beige) 100%);
+            color: var(--dark-brown);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: var(--warm-white);
+            box-shadow: var(--soft-shadow);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--warm-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--warm-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--warm-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--warm-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--warm-secondary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Section hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(ellipse at center, var(--pale-peach) 0%, var(--pale-cream) 70%);
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            margin-bottom: 1rem;
+            color: var(--warm-secondary);
+            font-weight: 300;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--warm-gray);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(45deg, var(--warm-primary), var(--warm-accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--warm-shadow);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(244, 162, 97, 0.3);
+        }
+
+        /* Sections générales */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--warm-secondary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--warm-primary), var(--warm-accent));
+            border-radius: 2px;
+        }
+
+        /* Grille portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .portfolio-item {
+            background: var(--warm-white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--soft-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--warm-shadow);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--pale-peach), var(--pale-sage));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warm-gray);
+            font-size: 1.2rem;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-content h3 {
+            color: var(--warm-secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .portfolio-content p {
+            color: var(--warm-gray);
+            line-height: 1.6;
+        }
+
+        /* Section à propos */
+        .about {
+            background: var(--pale-sage);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            color: var(--warm-gray);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            background: var(--warm-primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--warm-secondary);
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-brown);
+            color: var(--pale-cream);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--pale-cream);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--warm-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>Votre Nom</h1>
+            <p class="hero-subtitle">Créateur digital & Designer</p>
+            <a href="#portfolio" class="cta-button">Découvrir mes projets</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <h2 class="section-title">Mes Projets</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">Image Projet 1</div>
+                <div class="portfolio-content">
+                    <h3>Projet Web Design</h3>
+                    <p>Description du projet avec les technologies utilisées et les défis relevés.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">Image Projet 2</div>
+                <div class="portfolio-content">
+                    <h3>Application Mobile</h3>
+                    <p>Développement d'une application mobile avec une interface utilisateur moderne.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="portfolio-image">Image Projet 3</div>
+                <div class="portfolio-content">
+                    <h3>Identité Visuelle</h3>
+                    <p>Création complète d'une identité de marque incluant logo et charte graphique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="apropos">
+        <div class="about-content">
+            <h2 class="section-title">À Propos</h2>
+            <p class="about-text">
+                Passionné par le design et le développement, je crée des expériences digitales uniques 
+                qui allient esthétique et fonctionnalité. Mon approche se base sur l'écoute, 
+                la créativité et l'innovation technique.
+            </p>
+            <div class="skills">
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Design UI/UX</span>
+                <span class="skill-tag">Photoshop</span>
+                <span class="skill-tag">Figma</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Instagram</a>
+                <a href="#">Email</a>
+            </div>
+            <p>&copy; 2024 Votre Nom. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>
